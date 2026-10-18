@@ -1,5 +1,7 @@
 #pragma once
+extern "C" {
 #include <obs-module.h>
+}
 #include "source-manager.hpp"
 
 struct MultiSplitSource {

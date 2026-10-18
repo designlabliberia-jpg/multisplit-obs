@@ -1,6 +1,8 @@
 #include "multisplit-source.hpp"
+extern "C" {
 #include <obs-source.h>
 #include <graphics/effect.h>
+}
 #include "render/crop-renderer.hpp"
 #include "render/crop-math.hpp"
 #include "render/transform.hpp"

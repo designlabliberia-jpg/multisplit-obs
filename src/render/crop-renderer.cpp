@@ -1,6 +1,8 @@
 #include "crop-renderer.hpp"
+extern "C" {
 #include <graphics/graphics.h>
 #include <obs-source.h>
+}
 
 void CropRenderer::Render(obs_source_t* source, const CropRect::PixelRect& rect) {
     if (!source) return;

@@ -1,5 +1,7 @@
 #pragma once
+extern "C" {
 #include <obs-source.h>
+}
 #include <string>
 
 class SourceManager {
