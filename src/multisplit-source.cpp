@@ -51,12 +51,28 @@ static bool save_preset_clicked(obs_properties_t* props, obs_property_t* p, void
 }
 
 static obs_properties_t* multisplit_get_properties(void* data) {
+    (void)data;
     obs_properties_t* props = obs_properties_create();
     
     // Preset controls
     obs_properties_add_list(props, "preset_list", "Load Preset", OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
+    
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable : 4996)
+#elif defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+
     obs_properties_add_button(props, "save_preset", "Save as New", save_preset_clicked);
     obs_properties_add_button(props, "reset_preset", "Reset to Default", reset_preset_clicked);
+
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#elif defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
     obs_property_t* source_list = obs_properties_add_list(props, "input_source", "Base Camera Source", OBS_COMBO_TYPE_LIST, OBS_COMBO_FORMAT_STRING);
 
@@ -105,14 +121,17 @@ static void multisplit_destroy(void* data) {
 }
 
 static uint32_t multisplit_get_width(void* data) {
+    (void)data;
     return 1920; 
 }
 
 static uint32_t multisplit_get_height(void* data) {
+    (void)data;
     return 1080;
 }
 
 static void multisplit_video_render(void* data, gs_effect_t* effect) {
+    (void)effect;
     PerformanceMonitor perf;
     perf.Start();
 
@@ -152,6 +171,8 @@ struct obs_source_info multisplit_source_info = {
     .get_width = multisplit_get_width,
     .get_height = multisplit_get_height,
     .video_render = multisplit_video_render,
+    .video_tick = nullptr,
+    .get_defaults = nullptr,
     .get_properties = multisplit_get_properties,
     .update = multisplit_update
 };

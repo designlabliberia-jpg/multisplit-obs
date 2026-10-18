@@ -1,5 +1,4 @@
 #include "performance-monitor.hpp"
-#include <util/blog.h>
 
 void PerformanceMonitor::Start() {
     start_time = std::chrono::high_resolution_clock::now();
