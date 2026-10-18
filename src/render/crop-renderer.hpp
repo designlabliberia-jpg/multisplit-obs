@@ -4,5 +4,5 @@
 
 class CropRenderer {
 public:
-    static void Render(obs_source_t* source, const CropRect::PixelRect& rect);
+	static void Render(obs_source_t *source, const CropRect::PixelRect &rect);
 };

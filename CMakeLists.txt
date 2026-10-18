@@ -36,7 +36,18 @@ if(ENABLE_QT)
   )
 endif()
 
-target_sources(${CMAKE_PROJECT_NAME} PRIVATE src/plugin-main.cpp src/multisplit-source.cpp src/render/crop-math.cpp src/render/crop-renderer.cpp src/render/transform.cpp src/source-manager.cpp src/diagnostics/performance-monitor.cpp src/presets/preset-manager.cpp)
+target_sources(
+  ${CMAKE_PROJECT_NAME}
+  PRIVATE
+    src/plugin-main.cpp
+    src/multisplit-source.cpp
+    src/render/crop-math.cpp
+    src/render/crop-renderer.cpp
+    src/render/transform.cpp
+    src/source-manager.cpp
+    src/diagnostics/performance-monitor.cpp
+    src/presets/preset-manager.cpp
+)
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE src)
 
