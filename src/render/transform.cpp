@@ -3,6 +3,8 @@
 #include <cmath>
 
 void ApplyTransform(const TransformState& state, float center_x, float center_y) {
+    (void)center_x;
+    (void)center_y;
     gs_matrix_push();
     
     // Scale for flipping
