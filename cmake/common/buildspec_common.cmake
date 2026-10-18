@@ -57,8 +57,8 @@ function(_setup_obs_studio)
     set(_cmake_arch "-A ${arch},version=${CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION}")
     set(_cmake_extra "-DCMAKE_SYSTEM_VERSION=${CMAKE_SYSTEM_VERSION} -DCMAKE_ENABLE_SCRIPTING=OFF")
   elseif(OS_MACOS)
-    set(_cmake_generator "Xcode")
-    set(_cmake_arch "-DCMAKE_OSX_ARCHITECTURES:STRING='arm64;x86_64'")
+    set(_cmake_generator "Unix Makefiles")
+    set(_cmake_arch "")
     set(_cmake_extra "-DCMAKE_OSX_DEPLOYMENT_TARGET=${CMAKE_OSX_DEPLOYMENT_TARGET}")
   endif()
 
@@ -72,7 +72,6 @@ function(_setup_obs_studio)
       ${_cmake_extra}
     RESULT_VARIABLE _process_result
     COMMAND_ERROR_IS_FATAL ANY
-    OUTPUT_QUIET
   )
   message(STATUS "Configure ${label} (${arch}) - done")
 
@@ -82,7 +81,6 @@ function(_setup_obs_studio)
     WORKING_DIRECTORY "${dependencies_dir}/${_obs_destination}"
     RESULT_VARIABLE _process_result
     COMMAND_ERROR_IS_FATAL ANY
-    OUTPUT_QUIET
   )
   message(STATUS "Build ${label} (Debug - ${arch}) - done")
 
@@ -92,7 +90,6 @@ function(_setup_obs_studio)
     WORKING_DIRECTORY "${dependencies_dir}/${_obs_destination}"
     RESULT_VARIABLE _process_result
     COMMAND_ERROR_IS_FATAL ANY
-    OUTPUT_QUIET
   )
   message(STATUS "Build ${label} (Reelase - ${arch}) - done")
 
@@ -103,7 +100,6 @@ function(_setup_obs_studio)
     WORKING_DIRECTORY "${dependencies_dir}/${_obs_destination}"
     RESULT_VARIABLE _process_result
     COMMAND_ERROR_IS_FATAL ANY
-    OUTPUT_QUIET
   )
   execute_process(
     COMMAND
@@ -111,7 +107,6 @@ function(_setup_obs_studio)
     WORKING_DIRECTORY "${dependencies_dir}/${_obs_destination}"
     RESULT_VARIABLE _process_result
     COMMAND_ERROR_IS_FATAL ANY
-    OUTPUT_QUIET
   )
   message(STATUS "Install ${label} (${arch}) - done")
 endfunction()
