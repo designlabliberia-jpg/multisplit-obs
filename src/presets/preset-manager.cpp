@@ -44,8 +44,7 @@ Preset PresetManager::Deserialize(const std::string& json) {
     std::string name = extract_string(json, "name");
     if (!name.empty()) p.name = name;
     
-    float x = extract_string(json, "x").empty() ? extract_float(json, "x") : 0.5f;
-    // Let's use direct float extraction helper properly
+    // Direct float extraction
     size_t px = json.find("\"x\":");
     if (px != std::string::npos) p.center_x = std::stof(json.substr(px + 4));
 

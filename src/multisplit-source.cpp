@@ -12,10 +12,13 @@ void ApplyTransform(const TransformState& state, float center_x, float center_y)
 void EndTransform();
 
 static const char* multisplit_get_name(void* data) {
+    (void)data;
     return "Multi Split View";
 }
 
 static bool reset_preset_clicked(obs_properties_t* props, obs_property_t* p, void* data) {
+    (void)props;
+    (void)p;
     MultiSplitSource* s = static_cast<MultiSplitSource*>(data);
     if (s && s->context) {
         obs_data_t* settings = obs_source_get_settings(s->context);
@@ -34,6 +37,8 @@ static bool reset_preset_clicked(obs_properties_t* props, obs_property_t* p, voi
 }
 
 static bool save_preset_clicked(obs_properties_t* props, obs_property_t* p, void* data) {
+    (void)props;
+    (void)p;
     MultiSplitSource* s = static_cast<MultiSplitSource*>(data);
     if (s) {
         Preset p_obj{"Custom Preset", s->center_x, s->center_y, s->zoom, s->rotation, s->flip_h, s->flip_v};
