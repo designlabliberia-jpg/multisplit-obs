@@ -1,8 +1,8 @@
 #pragma once
 
-#include "obs.h"
-#include "obs-source.h"
-#include "obs-module.h"
+#include <obs.h>
+#include <obs-source.h>
+#include <obs-module.h>
 
 #ifdef __cplusplus
 extern "C" {
