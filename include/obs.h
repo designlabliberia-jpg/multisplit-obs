@@ -69,7 +69,8 @@ OBS_IMPORT uint32_t obs_source_get_height(const obs_source_t *source);
 OBS_IMPORT uint32_t obs_source_get_output_flags(const obs_source_t *source);
 OBS_IMPORT const char *obs_source_get_name(const obs_source_t *source);
 OBS_IMPORT void obs_source_video_render(obs_source_t *source);
-OBS_IMPORT void obs_register_source(struct obs_source_info *info);
+OBS_IMPORT void obs_register_source_s(struct obs_source_info *info, size_t size);
+#define obs_register_source(info) obs_register_source_s(info, sizeof(struct obs_source_info))
 
 OBS_IMPORT obs_source_t *obs_get_source_by_name(const char *name);
 OBS_IMPORT void obs_source_release(obs_source_t *source);
