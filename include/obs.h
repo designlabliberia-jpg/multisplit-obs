@@ -51,41 +51,47 @@ enum {
     OBS_SOURCE_ASYNC = (1 << 5)
 };
 
+#ifdef _WIN32
+#define OBS_IMPORT __declspec(dllimport)
+#else
+#define OBS_IMPORT
+#endif
+
 #define LOG_DEBUG 100
 #define LOG_INFO 200
 #define LOG_WARNING 300
 #define LOG_ERROR 400
 
-void blog(int log_level, const char *format, ...);
+OBS_IMPORT void blog(int log_level, const char *format, ...);
 
-uint32_t obs_source_get_width(const obs_source_t *source);
-uint32_t obs_source_get_height(const obs_source_t *source);
-uint32_t obs_source_get_output_flags(const obs_source_t *source);
-const char *obs_source_get_name(const obs_source_t *source);
-void obs_source_video_render(obs_source_t *source);
-void obs_register_source(struct obs_source_info *info);
+OBS_IMPORT uint32_t obs_source_get_width(const obs_source_t *source);
+OBS_IMPORT uint32_t obs_source_get_height(const obs_source_t *source);
+OBS_IMPORT uint32_t obs_source_get_output_flags(const obs_source_t *source);
+OBS_IMPORT const char *obs_source_get_name(const obs_source_t *source);
+OBS_IMPORT void obs_source_video_render(obs_source_t *source);
+OBS_IMPORT void obs_register_source(struct obs_source_info *info);
 
-obs_source_t *obs_get_source_by_name(const char *name);
-void obs_source_release(obs_source_t *source);
+OBS_IMPORT obs_source_t *obs_get_source_by_name(const char *name);
+OBS_IMPORT void obs_source_release(obs_source_t *source);
 
-obs_data_t *obs_source_get_settings(obs_source_t *source);
-void obs_data_set_double(obs_data_t *data, const char *name, double val);
-void obs_data_set_bool(obs_data_t *data, const char *name, bool val);
-void obs_source_update(obs_source_t *source, obs_data_t *settings);
-void obs_data_release(obs_data_t *data);
-const char *obs_data_get_string(obs_data_t *data, const char *name);
-double obs_data_get_double(obs_data_t *data, const char *name);
-bool obs_data_get_bool(obs_data_t *data, const char *name);
+OBS_IMPORT obs_data_t *obs_source_get_settings(obs_source_t *source);
+OBS_IMPORT void obs_data_set_double(obs_data_t *data, const char *name, double val);
+OBS_IMPORT void obs_data_set_bool(obs_data_t *data, const char *name, bool val);
+OBS_IMPORT void obs_source_update(obs_source_t *source, obs_data_t *settings);
+OBS_IMPORT void obs_data_release(obs_data_t *data);
+OBS_IMPORT const char *obs_data_get_string(obs_data_t *data, const char *name);
+OBS_IMPORT double obs_data_get_double(obs_data_t *data, const char *name);
+OBS_IMPORT bool obs_data_get_bool(obs_data_t *data, const char *name);
 
-obs_properties_t *obs_properties_create(void);
-void obs_properties_destroy(obs_properties_t *props);
-obs_property_t *obs_properties_add_list(obs_properties_t *props, const char *name, const char *description, enum obs_combo_type type, enum obs_combo_format format);
-obs_property_t *obs_properties_add_button(obs_properties_t *props, const char *name, const char *text, bool (*callback)(obs_properties_t *props, obs_property_t *property, void *data));
-obs_property_t *obs_properties_add_float_slider(obs_properties_t *props, const char *name, const char *text, double min, double max, double step);
-obs_property_t *obs_properties_add_bool(obs_properties_t *props, const char *name, const char *text);
-bool obs_property_list_add_string(obs_property_t *p, const char *name, const char *val);
+OBS_IMPORT obs_properties_t *obs_properties_create(void);
+OBS_IMPORT void obs_properties_destroy(obs_properties_t *props);
+OBS_IMPORT obs_property_t *obs_properties_add_list(obs_properties_t *props, const char *name, const char *description, enum obs_combo_type type, enum obs_combo_format format);
+OBS_IMPORT obs_property_t *obs_properties_add_button(obs_properties_t *props, const char *name, const char *text, bool (*callback)(obs_properties_t *props, obs_property_t *property, void *data));
+OBS_IMPORT obs_property_t *obs_properties_add_float_slider(obs_properties_t *props, const char *name, const char *text, double min, double max, double step);
+OBS_IMPORT obs_property_t *obs_properties_add_bool(obs_properties_t *props, const char *name, const char *text);
+OBS_IMPORT bool obs_property_list_add_string(obs_property_t *p, const char *name, const char *val);
 
-void obs_enum_sources(bool (*enum_callback)(void *param, obs_source_t *source), void *param);
+OBS_IMPORT void obs_enum_sources(bool (*enum_callback)(void *param, obs_source_t *source), void *param);
 
 struct obs_source_info {
     const char *id;
