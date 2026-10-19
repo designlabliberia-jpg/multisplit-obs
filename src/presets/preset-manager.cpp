@@ -38,14 +38,6 @@ Preset PresetManager::Deserialize(const std::string &json)
 		return str.substr(pos, end - pos);
 	};
 
-	auto extract_float = [](const std::string &str, const std::string &key) -> float {
-		size_t pos = str.find("\"" + key + "\":");
-		if (pos == std::string::npos)
-			return 0.0f;
-		pos += key.length() + 3;
-		return std::stof(str.substr(pos));
-	};
-
 	std::string name = extract_string(json, "name");
 	if (!name.empty())
 		p.name = name;

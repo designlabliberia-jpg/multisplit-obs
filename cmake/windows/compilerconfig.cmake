@@ -23,7 +23,7 @@ set(_obs_msvc_c_options /MP /Zc:__cplusplus /Zc:preprocessor)
 set(_obs_msvc_cpp_options /MP /Zc:__cplusplus /Zc:preprocessor)
 
 if(CMAKE_CXX_STANDARD GREATER_EQUAL 20)
-  list(APPEND _obs_msvc_cpp_options /Zc:char8_t-)
+  list(APPEND _obs_msvc_cpp_options /std:c++20 /Zc:char8_t-)
 endif()
 
 add_compile_options(
