@@ -1,7 +1,7 @@
 #include "crop-renderer.hpp"
 #include "../obs-compat.hpp"
 extern "C" {
-#include <graphics/graphics.h>
+#include "graphics/graphics.h"
 }
 
 void CropRenderer::Render(obs_source_t *source, const CropRect::PixelRect &rect)
