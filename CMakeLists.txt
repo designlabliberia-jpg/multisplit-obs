@@ -51,4 +51,8 @@ target_sources(
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE src include)
 
+if(MSVC)
+  target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE /std:c++20)
+endif()
+
 set_target_properties_plugin(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${_name})
