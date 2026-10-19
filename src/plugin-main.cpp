@@ -13,6 +13,11 @@ extern struct obs_source_info multisplit_source_info;
 extern "C" {
 #endif
 
+OBS_EXPORT uint32_t obs_module_ver(void)
+{
+	return LIBOBS_API_VER;
+}
+
 OBS_EXPORT bool obs_module_load(void)
 {
 	obs_register_source(&multisplit_source_info);
