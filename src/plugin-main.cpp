@@ -1,6 +1,4 @@
-extern "C" {
-#include <obs-module.h>
-}
+#include "obs-compat.hpp"
 
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE("multisplit", "en-US")

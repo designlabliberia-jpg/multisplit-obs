@@ -1,7 +1,5 @@
 #pragma once
-extern "C" {
-#include <obs-source.h>
-}
+#include "../obs-compat.hpp"
 #include "crop-math.hpp"
 
 class CropRenderer {
